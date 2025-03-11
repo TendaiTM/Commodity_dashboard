@@ -7,7 +7,7 @@
       <div class="flex flex-col flex-1 min-h-0 relative">
         <div class="flex items-center justify-stretch px-4 h-14">
           <StructureLogo />
-          <UtilitiesColorModeButton />
+          <!-- <UtilitiesColorModeButton /> -->
         </div>
         <StructureMenu :menus="menus" />
       </div>
@@ -38,9 +38,33 @@ export default {
             exact: true,
           },
           {
-            label: "Actions",
-            icon: "i-heroicons-queue-list",
-            to: "/user/actions",
+            label: "Wards",
+            icon: "i-heroicons:globe-europe-africa",
+            to: "/user/wards",
+            exact: true,
+          },
+          {
+            label: "Business Unit",
+            icon: "i-heroicons-map",
+            to: "/user/b_units",
+            exact: true,
+          },
+          {
+            label: "Farmers",
+            icon: "i-heroicons-user-group",
+            to: "/user/farmers",
+            exact: true,
+          },
+          {
+            label: "Commodities",
+            icon: "i-heroicons-presentation-chart-bar",
+            to: "/user/commodities",
+            exact: true,
+          },
+          {
+            label: "Service Providers",
+            icon: "i-heroicons-truck",
+            to: "/user/providers",
             exact: true,
           },
         ],
@@ -57,12 +81,12 @@ export default {
             to: "/user/profile",
             exact: true,
           },
-          {
-            label: "Theme Options",
-            icon: "i-heroicons-swatch",
-            to: "/user/profile/appearance",
-            exact: true,
-          },
+          // {
+          //   label: "Theme Options",
+          //   icon: "i-heroicons-swatch",
+          //   to: "/user/profile/appearance",
+          //   exact: true,
+          // },
         ],
       ],
     };

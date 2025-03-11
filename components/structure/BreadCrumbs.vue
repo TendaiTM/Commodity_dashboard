@@ -1,10 +1,10 @@
 <template>
   <div class="capitalize">
-    <UBreadcrumb :links="crumbs">
+    <!-- <UBreadcrumb :links="crumbs">
       <template #icon="{ link, index, isActive }">
         <icon :name="link.icon" class="w-4 h-4" />
       </template>
-    </UBreadcrumb>
+    </UBreadcrumb> -->
   </div>
 </template>
 <script>

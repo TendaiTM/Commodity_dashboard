@@ -2,7 +2,7 @@
   <div class="grid h-full w-full gap-4">
     <div class="flex flex-row items-center justify-between">
       <div>
-        <span class="dark:text-white text-gray-700 text-xl font-bold">Your Dashboard</span>
+        <span class="dark:text-white text-gray-700 text-xl font-bold">Data Dashboard</span>
       </div>
       <div>
         <UButton
@@ -14,7 +14,7 @@
           <template #leading>
             <UBadge size="xs">98</UBadge>
           </template>
-          Running Actions
+          Public Ledger
           <template #trailing>
             <icon name="i-heroicons-chevron-right-20-solid" />
           </template>
@@ -28,7 +28,7 @@
           :ui="{
             currentValue: randomInt(70, 100),
             previousValue: randomInt(70, 100),
-            title: 'Total Sales',
+            title: 'Total Commodities',
           }"
         />
       </div>
@@ -47,13 +47,13 @@
       >
         <div class="overflow-hidden space-y-4">
           <UAlert
-            title="Abnomaly Detected!"
-            description="User sessions are up 100% in the last hour."
+            title="Weather Abnomality Detected!"
+            description="High increase of wind in the last hour around Chimanimani"
           />
           <UAlert
-            title="Heads up!"
+            title="Price Checks Heads up!"
             color="white"
-            description="This is a description for a very important notice."
+            description="Price of cabbages and onions increasing volitality"
           />
         </div>
       </div>
@@ -94,10 +94,10 @@ export default {
     },
     randomMetricTitle() {
       const titles = [
-        "Total Sales",
-        "Total Orders",
-        "Total Products",
-        "Total Customers",
+        "Total Cereals",
+        "Total Vegitables",
+        "Total Legumes",
+        "Total Beef Cattle",
       ];
       const randomIndex = Math.floor(Math.random() * titles.length);
       return titles[randomIndex];

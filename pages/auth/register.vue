@@ -60,7 +60,7 @@
           </div>
           <UButton
             @click="register()"
-            color="emerald"
+            color="orange"
             :disabled="!registerValid"
             block
             >Sign Up With Email</UButton
