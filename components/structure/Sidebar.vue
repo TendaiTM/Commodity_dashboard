@@ -56,6 +56,30 @@ export default {
             exact: true,
           },
           {
+            label: "Farmer Next of Kins",
+            icon: "i-heroicons-user-group",
+            to: "/user/farmernoks",
+            exact: true,
+          },
+          {
+            label: "Farmer Spouses",
+            icon: "i-heroicons-user-group",
+            to: "/user/spouses",
+            exact: true,
+          },
+          {
+            label: "Farms",
+            icon: "i-heroicons-user-group",
+            to: "/user/farms",
+            exact: true,
+          },
+          {
+            label: "Bank accounts",
+            icon: "i-heroicons-user-group",
+            to: "/user/bankaccounts",
+            exact: true,
+          },
+          {
             label: "Commodities",
             icon: "i-heroicons-presentation-chart-bar",
             to: "/user/commodities",
