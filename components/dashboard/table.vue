@@ -1,5 +1,5 @@
 <template>
-  <UTable :columns="columns" :rows="people" />
+  <UTable :rows="people" />
 </template>
 
 <script>
