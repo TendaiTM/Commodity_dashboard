@@ -1,5 +1,5 @@
 <template>
-    <UTable :rows="noks" />
+    <UTable :rows="jsonData" />
     <center>
         <!-- <NuxtLink to="/farmer/farmeronboarding"><UButton>Add Farmer</UButton></NuxtLink> -->
         <NuxtLink to="/farmer/nokonboarding">
@@ -19,6 +19,7 @@ export default {
             nokURL: 'http://localhost:5000/api/next-of-kins',
             jsonData: [],
             noks: [],
+            /*
             columns: [
                 {
                     key: 'farmerid',
@@ -45,6 +46,7 @@ export default {
                     label: 'Phone Number',
                 },
             ]
+                */
             // columns: ['NationalID', 'Title', 'FirstName', 'Surname', 'EmailAddress']
             // noks: []
         }

@@ -1,5 +1,5 @@
 <template>
-    <UTable :rows="farms" />
+    <UTable :rows="jsonData" />
     <center>
         <!-- <NuxtLink to="/farmer/farmeronboarding"><UButton>Add Farmer</UButton></NuxtLink> -->
         <NuxtLink to="/farm/farmonboarding">
@@ -19,6 +19,7 @@ export default {
             farmURL: 'http://localhost:5000/api/farms',
             jsonData: [],
             farms: [],
+            /*
             columns: [
                 {
                     key: 'farmerid',
@@ -33,6 +34,7 @@ export default {
                     label: 'Arable Land Size',
                 },
             ]
+            */
             // columns: ['NationalID', 'Title', 'FirstName', 'Surname', 'EmailAddress']
             // farms: []
         }
@@ -46,7 +48,7 @@ export default {
     mounted() {
         axios.get(this.farmURL)
             .then((response) => {
-                this.jsonData = response.data.data
+                this.jsonData = response.data
                 console.log(this.jsonData)
                 console.log('Appending to farms')
                 for (let i = 0; i < this.jsonData.length; i++) {

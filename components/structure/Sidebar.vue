@@ -9,7 +9,9 @@
           <StructureLogo />
           <!-- <UtilitiesColorModeButton /> -->
         </div>
-        <StructureMenu :menus="menus" />
+        <div class="overflow-auto">
+          <StructureMenu :menus="menus" />
+        </div>
       </div>
       <div class="mx-4 mb-2">
         <UButton
@@ -24,7 +26,10 @@
     </div>
   </div>
 </template>
+
 <script>
+import { useRouter } from '#app';
+
 export default {
   data() {
     return {
@@ -80,6 +85,36 @@ export default {
             exact: true,
           },
           {
+            label: "Cooperatives",
+            icon: "i-heroicons-user-group",
+            to: "/user/cooperatives",
+            exact: true,
+          },
+          {
+            label: "Crops",
+            icon: "i-heroicons-user-group",
+            to: "/user/crops",
+            exact: true,
+          },
+          {
+            label: "Crop Production",
+            icon: "i-heroicons-user-group",
+            to: "/user/cropproductions",
+            exact: true,
+          },
+          {
+            label: "Certificates",
+            icon: "i-heroicons-user-group",
+            to: "/user/cropcertificates",
+            exact: true,
+          },
+          {
+            label: "Certificate Issuers",
+            icon: "i-heroicons-user-group",
+            to: "/user/cropcertificateissuers",
+            exact: true,
+          },
+          {
             label: "Commodities",
             icon: "i-heroicons-presentation-chart-bar",
             to: "/user/commodities",
@@ -115,6 +150,26 @@ export default {
       ],
     };
   },
+
+  methods: {
+    async logout(){
+      const router = useRouter();
+      const supabase = useSupabaseClient();
+      await supabase.auth.signOut().then((_)=>{
+        console.log('Logged out')
+        router.push("/auth/login")
+      })
+    }
+  }
 };
 </script>
-<style></style>
+
+
+<style scoped>
+/*
+.nuxt-container .sidebar {
+  overflow-y: auto;
+  max-height: 100vh;
+}
+  */
+</style>

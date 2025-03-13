@@ -2,8 +2,8 @@
     <UTable :rows="jsonData" />
     <center>
         <!-- <NuxtLink to="/farmer/farmeronboarding"><UButton>Add Farmer</UButton></NuxtLink> -->
-        <NuxtLink to="/farmer/bankaccountonboarding">
-            <UButton>Add Bank Details</UButton>
+        <NuxtLink to="/crop/cropcertificateissueronboarding">
+            <UButton>Add Certificate Issuer</UButton>
         </NuxtLink>
     </center>
 </template>
@@ -15,10 +15,10 @@ import _ from 'lodash'
 export default {
     data() {
         return {
-            url: 'http://localhost:5000/api',
-            bankURL: 'http://localhost:5000/api/bank-details',
+            // url: 'http://localhost:5000/api',
+            cropCertificateIssuersURL: 'http://localhost:5000/api/certificate-issuers',
             jsonData: [],
-            banks: [],
+            cropCertificateIssuers: [],
             /*
             columns: [
                 {
@@ -46,16 +46,17 @@ export default {
         }
     },
     mounted() {
-        axios.get(this.bankURL)
+        axios.get(this.cropCertificateIssuersURL)
             .then((response) => {
-                this.jsonData = response.data.data
+                this.jsonData = response.data
                 console.log(this.jsonData)
-                console.log('Appending to banks')
+                // console.log('Appending to cropCertificateIssuers')
+                /*
                 for (let i = 0; i < this.jsonData.length; i++) {
-                    // this.farms.push(this.jsonData[i])
-                    this.banks.push(_.pick(this.jsonData[i], ['FarmerID', 'AccountNumber', 'AccountName']))
+                    this.cropCertificateIssuers.push(_.pick(this.jsonData[i], ['FarmerID', 'AccountNumber', 'AccountName']))
                 }
-                console.log(this.banks)
+                */
+                console.log(this.jsonData)
             })
     }
 }

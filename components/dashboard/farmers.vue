@@ -1,5 +1,5 @@
 <template>
-  <UTable :rows="farmers" />
+  <UTable :rows="jsonData" />
   <center>
     <NuxtLink to="/farmer/farmeronboarding">
       <UButton>Add Farmer</UButton>
@@ -19,6 +19,7 @@ export default {
       farmersURL: 'http://localhost:5000/api/farmers',
       jsonData: [],
       farmers: [],
+      /*
       columns: [
         {
           key: 'nationalid',
@@ -41,6 +42,7 @@ export default {
           label: 'Email',
         },
       ]
+        */
       // columns: ['NationalID', 'Title', 'FirstName', 'Surname', 'EmailAddress']
       // farmers: []
     }

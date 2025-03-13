@@ -104,6 +104,9 @@ export default {
             const supabase = useSupabaseClient();
             supabase.auth.signInWithOAuth({
               provider: "google",
+              options: {
+                redirectTo: 'http://localhost:3000/user'
+              }
             });
           },
         },
