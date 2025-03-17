@@ -12,16 +12,15 @@ export default {
 
     data() {
         return {
-            cooperativeIDJson: [],
-            // cooperativeIDs: [],
+            farmIDJson: [],
+            // farmIDs: [],
             submitURL: 'http://localhost:5000/api/crop/create',
-            farmsURL: 'http://localhost:5000/api/crops',
+            farmsURL: 'http://localhost:5000/api/farms',
             form: {
                 cropID: null,
                 cropName: null,
                 season: null,
-                certificateID: null,
-                productionReferenceID: null
+                farmID: null
             }
         }
     },
@@ -38,16 +37,16 @@ export default {
     },
 
     async mounted() {
-        // this.cooperativeIDs.push('Farmer ID')
+        // this.farmIDs.push('Farmer ID')
         await axios.get(this.farmsURL).then((response) => {
             console.log(response.data)
             for(let i=0; i<response.data.length; i++){
-                this.cooperativeIDJson.push(_.pick(response.data[i], ['CropID']))
-                // this.cooperativeIDs.push(this.cooperativeIDJson['FarmerID'])
+                this.farmIDJson.push(_.pick(response.data[i], ['FarmID']))
+                // this.farmIDs.push(this.farmIDJson['FarmerID'])
                 
             }
-            // this.form.cooperativeID = this.cooperativeIDJson[0]
-            console.log(this.form.cooperativeID)
+            // this.form.farmID = this.farmIDJson[0]
+            console.log(this.form.farmID)
         })
     }
 }
@@ -76,25 +75,22 @@ input[type=number] {
                     <h2 class="text-3l text-center font-semibold mb-6">{{ title }}</h2>
 
                     <!-- 1st row -->
-                    <div class="mb-4 grid grid-cols-3 gap-3">
-                        <select v-model="form.cropID" id="cropID" name="cropID"
+                    <div class="mb-4 grid grid-cols-2 gap-2">
+                        <select v-model="form.farmID" id="farmID" name="farmID"
                             class="border rounded w-full py-2 px-3">
-                            <option value="" disabled>Crop ID</option>
-                            <option v-for="id in cooperativeIDJson" :key="id" >{{ id['CropID'] }}</option>
+                            <option value="" disabled>Farm ID</option>
+                            <option v-for="id in farmIDJson" :key="id" >{{ id['FarmID'] }}</option>
                         </select>
-                        <input type="text" v-model="form.cropName" id="cropName" name="cropName"
-                            class="border rounded w-full py-2 px-3 mb-2" placeholder="Crop name" required>
-
-                        <input type="text" v-model="form.season" id="season" name="season"
-                            class="border rounded w-full py-2 px-3 mb-2" placeholder="Season" required>
+                        <input type="text" v-model="form.cropID" id="cropID" name="cropID"
+                            class="border rounded w-full py-2 px-3 mb-2" placeholder="Crop ID" required>
                     </div>
 
                     <!-- 2nd row -->
                     <div class="mb-4 grid grid-cols-2 gap-2">
-                        <input type="text" v-model="form.certificateID" id="certificateID" name="certificateID"
-                            class="border rounded w-full py-2 px-3 mb-2" placeholder="Certificate ID" required>
-                        <input type="text" v-model="form.productionReferenceID" id="productionReferenceID" name="productionReferenceID"
-                            class="border rounded w-full py-2 px-3 mb-2" placeholder="Production reference ID" required>
+                        <input type="text" v-model="form.cropName" id="cropName" name="cropName"
+                            class="border rounded w-full py-2 px-3 mb-2" placeholder="Crop name" required>
+                        <input type="text" v-model="form.season" id="season" name="season"
+                            class="border rounded w-full py-2 px-3 mb-2" placeholder="Season" required>
                     </div>
                     <div>
                         <button

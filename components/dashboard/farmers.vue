@@ -35,7 +35,7 @@ export default {
     axios.get(this.farmersURL)
       .then((response) => {
         const data = response.data
-        const transformedData = data.map(item => {
+        const transformedData = response.data.map(item => {
           const { FarmerNextOfKin, ...rest } = item;
           return {
             ...rest,

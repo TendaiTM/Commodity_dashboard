@@ -72,13 +72,12 @@ export default {
   methods: {
     async register() {
       const router = useRouter()
-      await useSupabaseClient().auth.signUp({
+      const {data, error } = await useSupabaseClient().auth.signUp({
           email: this.email,
           password: this.password.value,
-        }).then((_) => {
-          console.log('Registered')
-          router.push('/user/dashboard')
-        });
+        })
+      console.log(data)
+      console.log(error)
     }
   },
   computed: {

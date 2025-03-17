@@ -13,7 +13,7 @@
           <StructureMenu :menus="menus" />
         </div>
       </div>
-      <div class="mx-4 mb-2">
+      <!-- <div class="mx-4 mb-2">
         <UButton
           block
           color="black"
@@ -22,7 +22,7 @@
           label="Logout"
           @click="logout"
         />
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
