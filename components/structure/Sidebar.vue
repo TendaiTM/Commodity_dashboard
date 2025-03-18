@@ -42,6 +42,7 @@ export default {
             to: "/user/dashboard",
             exact: true,
           },
+          /*
           {
             label: "Wards",
             icon: "i-heroicons:globe-europe-africa",
@@ -54,36 +55,38 @@ export default {
             to: "/user/b_units",
             exact: true,
           },
+          */
           {
             label: "Farmers",
             icon: "i-heroicons-briefcase",
             to: "/user/farmers",
             exact: true,
           },
-          // {
-          //   label: "Farmer Next of Kins",
-          //   icon: "i-heroicons-user-group",
-          //   to: "/user/farmernoks",
-          //   exact: true,
-          // },
-          // {
-          //   label: "Farmer Spouses",
-          //   icon: "i-heroicons-user-group",
-          //   to: "/user/spouses",
-          //   exact: true,
-          // },
+          /*
+          {
+            label: "Farmer Next of Kins",
+            icon: "i-heroicons-user-group",
+            to: "/user/farmernoks",
+            exact: true,
+          },
+          {
+            label: "Farmer Spouses",
+            icon: "i-heroicons-user-group",
+            to: "/user/spouses",
+            exact: true,
+          },
           {
             label: "Farms",
             icon: "i-heroicons-user-group",
             to: "/user/farms",
             exact: true,
           },
-          // {
-          //   label: "Bank accounts",
-          //   icon: "i-heroicons-user-group",
-          //   to: "/user/bankaccounts",
-          //   exact: true,
-          // },
+          {
+            label: "Bank accounts",
+            icon: "i-heroicons-user-group",
+            to: "/user/bankaccounts",
+            exact: true,
+          },
           {
             label: "Cooperatives",
             icon: "i-heroicons-user-group",
@@ -114,16 +117,29 @@ export default {
             to: "/user/cropcertificateissuers",
             exact: true,
           },
+          */
           {
             label: "Commodities",
-            icon: "i-heroicons-presentation-chart-bar",
+            icon: "i-heroicons-shopping-cart",
             to: "/user/commodities",
             exact: true,
           },
           {
+            label: "Livestock",
+            icon: "i-heroicons-eye-dropper",
+            to: "/user/livestock",
+            exact: true,
+          },
+          {
             label: "Service Providers",
-            icon: "i-heroicons-truck",
+            icon: "i-heroicons-shopping-bag",
             to: "/user/providers",
+            exact: true,
+          },
+          {
+            label: "Weather",
+            icon: "i-heroicons-cloud",
+            to: "/user/weather",
             exact: true,
           },
         ],

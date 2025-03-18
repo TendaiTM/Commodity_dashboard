@@ -35,6 +35,14 @@ const banks = ['Agricultural Development Bank of Zimbabwe', 'BancABC', 'Cabs', '
 const selectedBank = ''
 const landOwnerships = ['99-year lease', 'Freeholding', 'Title deeds', 'Other']
 const selectedLandOwnership = ''
+const livestockTypes = ['cattle', 'chickens', 'goats', 'pigs']
+const selectedLivestockType = ''
+
+var livestockPresent = ref(false)
+
+const changeState = () => {
+    livestockPresent.value = !livestockPresent.value
+}
 
 const farmerForm = reactive({
     nationalid: null,
@@ -106,6 +114,16 @@ const farmForm = reactive({
     agritexreference: null,
     cooperativeid: null,
     farmerid: null
+})
+
+const livestockForm = reactive({
+    farmerid: null,
+    livestocktype: selectedLivestockType,
+    breed: null,
+    sex: null,
+    dateofbirth: null,
+    dateacquired: null,
+    healthstatus: null
 })
 
 const submit = async () => {
@@ -229,7 +247,7 @@ input[type=number] {
                                 class="border rounded w-full py-2 px-3  mb-2">
                                 <option value="" selected disabled>Marital Status</option>
                                 <option v-for="maritalstatus in maritalstatuses" :key="maritalstatus">{{ maritalstatus
-                                }}</option>
+                                    }}</option>
                             </select>
                             <input type="text" v-model="farmerForm.emailaddress" id="emailAddress" name="emailAddress"
                                 class="border rounded w-full py-2 px-3 mb-2" placeholder="Email address">
@@ -373,8 +391,8 @@ input[type=number] {
                         <div class="mb-4 grid grid-cols-3 gap-3">
                             <select v-model="farmForm.landownership" id="landownership" name="landownership"
                                 class="border rounded w-full py-2 px-3  mb-2">
-                                <option value="" selected disabled>Province</option>
-                                <option v-for="province in provinces" :key="province">{{ province }}</option>
+                                <option value="" selected disabled>Land ownership</option>
+                                <option v-for="lo in landOwnerships" :key="lo">{{ lo }}</option>
                             </select>
                             <input type="number" v-model="farmForm.landsize" id="landsize" name="landsize"
                                 class="border rounded w-full py-2 px-3 mb-2" placeholder="Land size" required>
@@ -392,7 +410,7 @@ input[type=number] {
                                 name="physicaladdress" class="border rounded w-full py-2 px-3 mb-2"
                                 placeholder="Physical Address" required>
                         </div>
-                        <div class="mb-4 grid grid-cols-2 gap-2">
+                        <div class="mb-4 grid grid-cols-3 gap-3">
                             <input type="text" v-model="farmForm.towncity" id="towncity" name="towncity"
                                 class="border rounded w-full py-2 px-3 mb-2" placeholder="Town/City" required>
                             <select v-model="farmerForm.province" id="province" name="province"
@@ -400,9 +418,44 @@ input[type=number] {
                                 <option value="" selected disabled>Province</option>
                                 <option v-for="province in provinces" :key="province">{{ province }}</option>
                             </select>
+                            <label class="inline-flex items-center cursor-pointer">
+                                <input @click="changeState" type="checkbox" value="" class="sr-only peer">
+                                <div
+                                    class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-orange-300 dark:peer-focus:ring-orange-500 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-orange-200 dark:peer-checked:bg-orange-400">
+                                </div>
+                                <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Any
+                                    livestock?</span>
+                            </label>
                         </div>
                     </div>
 
+                    <!-- Livestock form -->
+                    <div v-if="livestockPresent">
+                        <h2 class="text-lg font-bold mb-4">Livestock info</h2>
+                        <hr>
+                        <div class="mt-4 mb-4 grid grid-cols-3 gap-3">
+                            <select v-model="livestockForm.livestocktype" id="livestocktype" name="livestocktype"
+                                class="border rounded w-full py-2 px-3  mb-2">
+                                <option value="" selected disabled>Livestock Type</option>
+                                <option v-for="lst in livestockTypes" :key="lst">{{ lst }}</option>
+                            </select>
+                            <input type="text" v-model="livestockForm.breed" id="breed" name="breed"
+                                class="border rounded w-full py-2 px-3 mb-2" placeholder="Breed" required>
+                            <select v-model="livestockForm.sex" id="lssex" name="lssex"
+                                class="border rounded w-full py-2 px-3  mb-2">
+                                <option value="" selected disabled>Sex</option>
+                                <option v-for="gender in genders" :key="gender">{{ gender }}</option>
+                            </select>
+                        </div>
+                        <div class="mb-4 grid grid-cols-3 gap-3">
+                            <VueDatePicker v-model="livestockForm.dateofbirth" :format="'yyyy-MM-dd'"
+                                placeholder="Date of birth"></VueDatePicker>
+                            <VueDatePicker v-model="livestockForm.dateacquired" :format="'yyyy-MM-dd'"
+                                placeholder="Date acquired"></VueDatePicker>
+                            <input type="text" v-model="livestockForm.healthstatus" id="healthstatus" name="healthstatus"
+                                class="border rounded w-full py-2 px-3 mb-2" placeholder="Health status" required>
+                        </div>
+                    </div>
                     <div>
                         <button
                             class="bg-orange-300 hover:bg-orange-600 text-white font-bold py-4 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
